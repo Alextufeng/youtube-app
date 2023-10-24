@@ -1,48 +1,46 @@
-export interface IItem {
+export interface Item {
   kind: string;
   etag: string;
   id: string;
-  snippet: ISnippet;
-  statistics: IStatistics;
+  snippet: Snippet;
+  statistics: Statistics;
 }
 
-interface ISnippet {
+interface Snippet {
   publishedAt: string;
   channelId: string;
   title: string;
   description: string;
-  thumbnails: IThumbnails;
+  thumbnails: Thumbnails;
   channelTitle: string;
   tags: string[];
   categoryId: string;
   liveBroadcastContent: string;
-  localized: ILocalized;
+  localized: {
+    title: string;
+    description: string;
+  };
   defaultAudioLanguage: string;
 }
 
-interface IThumbnail {
+interface Thumbnails {
+  default: Thumbnail;
+  medium: Thumbnail;
+  high: Thumbnail;
+  standard: Thumbnail;
+  maxres: Thumbnail;
+}
+
+interface Thumbnail {
   url: string;
   width: number;
   height: number;
 }
 
-interface IThumbnails {
-  default: IThumbnail;
-  medium: IThumbnail;
-  high: IThumbnail;
-  standard: IThumbnail;
-  maxres: IThumbnail;
-}
-
-interface ILocalized {
-  title: string;
-  description: string;
-}
-
-interface IStatistics {
+interface Statistics {
   viewCount: string;
   likeCount: string;
   dislikeCount: string;
-  favoriteCount:string;
+  favoriteCount: string;
   commentCount: string;
 }
