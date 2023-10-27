@@ -1,0 +1,10 @@
+@import 'colors';
+
+:host {
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column wrap;
+  background-color: $background;
+}
