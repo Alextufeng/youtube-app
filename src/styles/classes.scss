@@ -1,0 +1,16 @@
+@import 'colors';
+
+button {
+  color: $white;
+  background-color: $blue-color;
+  filter: drop-shadow(2px 0px 4px $blue-color);
+  padding: 8px 30px;
+  border-radius: 5px;
+  align-self: center;
+  border: none;
+  font-size: 12px;
+
+  & span {
+    padding: 4px 12px;
+  }
+}

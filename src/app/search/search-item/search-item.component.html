@@ -4,28 +4,14 @@
     alt="results-item__image"
     [src]="item.snippet.thumbnails.medium.url"
   />
-  <div class="results-item__statistics">
-    <!-- <app-statistics-item
-      type="viewed"
-      [number]="statistics.viewCount"
-    ></app-statistics-item>
-    <app-statistics-item
-      type="liked"
-      [number]="statistics.likeCount"
-    ></app-statistics-item>
-    <app-statistics-item
-      type="disliked"
-      [number]="statistics.dislikeCount"
-    ></app-statistics-item>
-    <app-statistics-item
-      type="comments"
-      [number]="statistics.commentCount"
-    ></app-statistics-item>
-  </div>
-  <h3 class="results-item__title">{{ channelTitle + " #" + categoryId }}</h3>
-  <app-more-button
-    class="results-item__button"
-    routerLink="result/{{ itemId }}"
-  ></app-more-button> -->
-  </div>
+
+  <div class="results-item__statistics"></div>
+  <h3 class="results-item__title">
+    {{ item.snippet.channelTitle + ' #' + item.snippet.categoryId }}
+  </h3>
+  <div></div>
+  <div></div>
+  <button class="results-item__button">
+    <span>more...</span>
+  </button>
 </div>

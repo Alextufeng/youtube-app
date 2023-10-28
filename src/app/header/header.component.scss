@@ -6,8 +6,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: $header-background;
-  box-shadow: $block-shadow;
+  background-color: $block-background;
+  box-shadow: 0px 4px 4px $block-shadow;
 }
 
 .header {
