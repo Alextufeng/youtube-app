@@ -1,6 +1,15 @@
-<div class="wrapper">
-  <app-header-logo-icon></app-header-logo-icon>
-  <app-header-search></app-header-search>
-  <app-header-search-settings></app-header-search-settings>
-</div>
+<div class="header">
+  <mat-icon [svgIcon]="'logoIcon'" class="logo__icon"></mat-icon>
 
+  <app-header-search></app-header-search>
+  <mat-icon [svgIcon]="'settingsIcon'" class="settings__icon" (click)="settingsShown()"></mat-icon>
+
+  <div class="auth">
+    <span class="auth__name">Your Name</span>
+    <mat-icon [svgIcon]="'authIcon'" class="auth__icon"></mat-icon>
+  </div>
+</div>
+<ng-container *ngIf="isSettingsShown">
+  <span class="line"></span>
+  <app-header-search-settings></app-header-search-settings>
+</ng-container>

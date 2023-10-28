@@ -1,10 +1,10 @@
-import { Item } from './search-item.model';
+import { DataItem } from './search-item.model';
 
-export interface Response {
+export interface DataResponse {
   kind: string;
   etag: string;
   pageInfo: PageInfo;
-  items: Item[];
+  items: DataItem[];
 }
 
 interface PageInfo {

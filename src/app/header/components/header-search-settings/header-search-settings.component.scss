@@ -1,5 +1,44 @@
 @import 'colors';
 
-:host {
-  filter: drop-shadow(2px 0px 4px $blue-color);
+.settings {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  font-size: 12px;
+
+  &__item {
+    color: $blue-color;
+    border-bottom: 1px solid $blue-color;
+    cursor: pointer;
+  }
+
+  &-date,
+  &-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__placeholder {
+      color: $text-secondary;
+      cursor: default;
+    }
+
+    &__field {
+      width: 150px;
+      height: 14px;
+      background-color: $white;
+      padding: 0 0 0 5px;
+      border: none;
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: $text-secondary;
+      }
+    }
+  }
 }

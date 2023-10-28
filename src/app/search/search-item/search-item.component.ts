@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DataItem } from '../search-item.model';
 
 @Component({
   selector: 'app-search-item',
@@ -8,4 +9,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.scss'],
 })
-export class SearchItemComponent {}
+export class SearchItemComponent {
+  @Input() item: DataItem;
+  /* @Input() set item(item: DataItem) {
+    this.fullItem = item;
+  } */
+}

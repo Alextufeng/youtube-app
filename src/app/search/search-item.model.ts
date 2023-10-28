@@ -1,4 +1,4 @@
-export interface Item {
+export interface DataItem {
   kind: string;
   etag: string;
   id: string;
