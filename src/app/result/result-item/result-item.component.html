@@ -1,13 +1,11 @@
-<div class="results-item">
-  <img
-    class="results-item__image"
-    alt="results-item__image"
-    [src]="item.snippet.thumbnails.medium.url"
-  />
+<div class="results-item" [appBorderColor]="borderBottomColor">
+  <img class="results-item__image" alt="results-item__image" [src]="mediumThumbnailUrl" />
 
-  <div class="results-item__statistics"></div>
+  <div class="results-item__statistics">
+    <app-statistics-list [statRow]="statistics"></app-statistics-list>
+  </div>
   <h3 class="results-item__title">
-    {{ item.snippet.channelTitle + ' #' + item.snippet.categoryId }}
+    {{ channelTitle + ' #' + categoryId }}
   </h3>
   <div></div>
   <div></div>

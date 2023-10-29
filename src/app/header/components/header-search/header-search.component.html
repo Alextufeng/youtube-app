@@ -1,4 +1,8 @@
 <div class="search">
   <input class="search__input" type="text" [placeholder]="placeholder" />
-  <mat-icon [svgIcon]="'searchButtonIcon'" class="search__icon"></mat-icon>
+  <mat-icon
+    [svgIcon]="'searchButtonIcon'"
+    class="search__icon"
+    (click)="onResultsList()"
+  ></mat-icon>
 </div>

@@ -37,10 +37,10 @@ interface Thumbnail {
   height: number;
 }
 
-interface Statistics {
+export interface Statistics {
   viewCount: string;
   likeCount: string;
   dislikeCount: string;
-  favoriteCount: string;
+  favoriteCount?: string;
   commentCount: string;
 }
