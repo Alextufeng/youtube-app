@@ -1,21 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchDataService } from 'src/app/services/search-data.service';
+import { FormsModule } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-header-search',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, FormsModule],
   templateUrl: './header-search.component.html',
   styleUrls: ['./header-search.component.scss'],
 })
 export class HeaderSearchComponent {
+  public searchString$ = new BehaviorSubject('');
+
+  public searchInputValue = '';
+
   public placeholder = 'What are you want to find out?';
 
-  constructor(private dataService: SearchDataService) {}
+  private dataService = inject(SearchDataService);
 
-  public onResultsList(): void {
+  public makeSearch(): void {
     this.dataService.onSearchClick$.next(true);
+  }
+
+  public inputChange(event: Event): void {
+    const searchString = (event.target as HTMLInputElement).value;
+    this.searchString$.next(searchString);
   }
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { DataResponse } from '../variables/search-response.model';
 import * as dataResponse from 'src/assets/mock-data.json';
-import { DataItem } from '../variables/search-item.model';
 import { BehaviorSubject } from 'rxjs';
+import { DataResponse } from '../variables/search-response.model';
+import { DataItem } from '../variables/search-item.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,20 +11,21 @@ export class SearchDataService {
   public onSearchClick$ = new BehaviorSubject(false);
 
   private data: DataResponse = dataResponse;
-  private resultsData: DataItem[] = this.data.items;
-  private dateIsChanged = 0;
-  private filterString = '';
 
-  getData(): DataItem[] {
-    return this.resultsData;
+  private dateIsChanged = 0;
+
+  public filterString$ = new BehaviorSubject<string>('');
+
+  public resultsData$: BehaviorSubject<DataItem[]> = new BehaviorSubject<DataItem[]>([]);
+
+  public resultsData: DataItem[] = [];
+
+  getData(): void {
+    this.resultsData$.next(this.data.items);
   }
 
   getDataChanged(): number {
     return this.dateIsChanged;
-  }
-
-  getFilterString(): string {
-    return this.filterString;
   }
 
   searchData(searchString: string) {
@@ -41,33 +42,39 @@ export class SearchDataService {
   }
 
   sortResultByDate(): void {
-    if (this.resultsData.length < 2) {
-      return;
+    let list: DataItem[] = [];
+    this.resultsData$.subscribe((value) => {
+      list = value;
+    });
+    if (list.length > 1) {
+      const lastIndex = list.length - 1;
+      const firstItemDate = +new Date(list[0].snippet.publishedAt);
+      const lastItemDate = +new Date(list[lastIndex].snippet.publishedAt);
+      const order = firstItemDate > lastItemDate ? 1 : -1;
+      list.sort(
+        (a, b) =>
+          order * +new Date(a.snippet.publishedAt) - order * +new Date(b.snippet.publishedAt),
+      );
+      this.resultsData$.next(list);
     }
-    const lastIndex = this.resultsData.length - 1;
-    const firstItemDate = +new Date(this.resultsData[0].snippet.publishedAt);
-    const lastItemDate = +new Date(this.resultsData[lastIndex].snippet.publishedAt);
-    const order = firstItemDate > lastItemDate ? 1 : -1;
-    this.resultsData.sort(
-      (a, b) => order * +new Date(a.snippet.publishedAt) - order * +new Date(b.snippet.publishedAt),
-    );
-    this.dateIsChanged = Date.now();
   }
 
   sortResultByViews(): void {
-    if (this.resultsData.length > 1) {
-      const lastIndex = this.resultsData.length - 1;
-      const firstItemViewCount = this.resultsData[0].statistics.viewCount;
-      const lastItemViewCount = this.resultsData[lastIndex].statistics.viewCount;
+    let list: DataItem[] = [];
+    this.resultsData$.subscribe((value) => {
+      list = value;
+    });
+    if (list.length > 1) {
+      const lastIndex = list.length - 1;
+      const firstItemViewCount = list[0].statistics.viewCount;
+      const lastItemViewCount = list[lastIndex].statistics.viewCount;
       const order = firstItemViewCount > lastItemViewCount ? -1 : 1;
-      this.resultsData.sort(
-        (a, b) => order * +a.statistics.viewCount - order * +b.statistics.viewCount,
-      );
-      this.dateIsChanged = Date.now();
+      list.sort((a, b) => order * +a.statistics.viewCount - order * +b.statistics.viewCount);
+      this.resultsData$.next(list);
     }
   }
 
   changeSearchTag(input: string) {
-    this.filterString = input;
+    this.filterString$.next(input);
   }
 }

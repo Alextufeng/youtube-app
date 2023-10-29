@@ -6,13 +6,15 @@ import { DataItem } from '../variables/search-item.model';
   standalone: true,
 })
 export class ResultFilterPipe implements PipeTransform {
-  resultData: DataItem[] = [];
+  private resultsData: DataItem[] = [];
 
-  transform(items: DataItem[], keyString: string): DataItem[] {
-    if (keyString) {
-      this.resultData = items.filter((item) => item.snippet.tags.includes(keyString));
-      return this.resultData;
+  public transform(list: DataItem[], filterString: string): DataItem[] {
+    if (filterString) {
+      this.resultsData = list.filter(
+        (array) => array.snippet.tags && array.snippet.tags.includes(filterString),
+      );
+      return this.resultsData;
     }
-    return items;
+    return list;
   }
 }

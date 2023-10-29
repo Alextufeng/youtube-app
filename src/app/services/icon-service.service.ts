@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -6,22 +6,15 @@ import { DomSanitizer } from '@angular/platform-browser';
   providedIn: 'root',
 })
 export class IconService {
-  constructor(
-    private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer,
-  ) {}
+  private iconRegistry = inject(MatIconRegistry);
+
+  private sanitizer = inject(DomSanitizer);
 
   add(iconName: string, source: string): void {
-    void this.iconRegistry.addSvgIconLiteral(
-      iconName,
-      this.sanitizer.bypassSecurityTrustHtml(source),
-    );
+    this.iconRegistry.addSvgIconLiteral(iconName, this.sanitizer.bypassSecurityTrustHtml(source));
   }
 
   addPath(iconName: string, path: string): void {
-    void this.iconRegistry.addSvgIcon(
-      iconName,
-      this.sanitizer.bypassSecurityTrustResourceUrl(path),
-    );
+    this.iconRegistry.addSvgIcon(iconName, this.sanitizer.bypassSecurityTrustResourceUrl(path));
   }
 }

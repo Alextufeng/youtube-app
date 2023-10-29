@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { StatisticsItemComponent } from '../statistics-item/statistics-item.component';
-import { DataItem, Statistics } from '../../../variables/search-item.model';
+import { Statistics } from '../../../variables/search-item.model';
 
 @Component({
   selector: 'app-statistics-list',
@@ -12,9 +12,11 @@ import { DataItem, Statistics } from '../../../variables/search-item.model';
 })
 export class StatisticsListComponent implements OnInit {
   @Input() statRow: Statistics;
-  public statRowItem: any;
+
+  public statRowItem: [string, string][];
 
   public ngOnInit(): void {
     this.statRowItem = Object.entries(this.statRow);
+    // console.log(typeof this.statRowItem);
   }
 }

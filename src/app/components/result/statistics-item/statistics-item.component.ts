@@ -12,9 +12,11 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class StatisticsItemComponent implements OnInit {
   @Input() statItem: string;
+
   @Input() statCount: string;
 
   public icon: string;
+
   public number: string;
 
   public ngOnInit() {

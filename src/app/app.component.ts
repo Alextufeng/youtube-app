@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { IconService } from './services/icon-service.service';
+import { Component, OnInit, inject } from '@angular/core';
 import { searchButtonIcon } from 'src/assets/icons/search-btn';
 import { logoIcon } from 'src/assets/icons/logo';
 import { settingsIcon } from 'src/assets/icons/settings';
 import { authIcon } from 'src/assets/icons/auth';
+import { IconService } from './services/icon-service.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import { authIcon } from 'src/assets/icons/auth';
 export class AppComponent implements OnInit {
   title = 'youtube-client';
 
-  constructor(private iconService: IconService) {}
+  private iconService = inject(IconService);
 
   public ngOnInit(): void {
     this.InitSvgIcons();

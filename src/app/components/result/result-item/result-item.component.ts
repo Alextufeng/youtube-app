@@ -1,31 +1,46 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataItem, Statistics } from '../../../variables/search-item.model';
 import { MatIconModule } from '@angular/material/icon';
 import { BorderColorDirective } from 'src/app/directives/border-color.directive';
+import { BUTTONS } from 'src/app/variables/constants';
+import { DataItem, Statistics } from '../../../variables/search-item.model';
 import { StatisticsListComponent } from '../statistics-list/statistics-list.component';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
   selector: 'app-result-item',
   standalone: true,
-  imports: [CommonModule, MatIconModule, BorderColorDirective, StatisticsListComponent],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    BorderColorDirective,
+    StatisticsListComponent,
+    ButtonComponent,
+  ],
   templateUrl: './result-item.component.html',
   styleUrls: ['./result-item.component.scss'],
 })
 export class ResultItemComponent implements OnInit {
-  [x: string]: any;
   @Input() set item(item: DataItem) {
     this.fullItem = item;
   }
+
   private fullItem!: DataItem;
 
   public itemId = '';
+
   public borderBottomColor = '';
+
   public publishedDaysCount = 0;
+
   public mediumThumbnailUrl = '';
+
   public channelTitle = '';
+
   public categoryId = '';
+
   public mediumImageUrl = '';
+
   public statistics: Statistics = {
     commentCount: '0',
     dislikeCount: '0',
@@ -33,6 +48,8 @@ export class ResultItemComponent implements OnInit {
     likeCount: '0',
     viewCount: '0',
   };
+
+  public buttonText = BUTTONS.more;
 
   public ngOnInit(): void {
     this.setPublishedDaysBefore(this.fullItem.snippet.publishedAt);

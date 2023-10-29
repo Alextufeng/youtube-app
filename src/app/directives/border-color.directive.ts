@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Renderer2, inject } from '@angular/core';
 
 @Directive({
   selector: '[appBorderColor]',
@@ -7,10 +7,9 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 export class BorderColorDirective implements OnInit {
   @Input('appBorderColor') color = '';
 
-  constructor(
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
-  ) {}
+  private elementRef = inject(ElementRef);
+
+  private renderer = inject(Renderer2);
 
   public ngOnInit(): void {
     this.renderer.setStyle(

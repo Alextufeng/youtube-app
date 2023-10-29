@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { HeaderSearchSettingsComponent } from './components/header-search-settings/header-search-settings.component';
 import { HeaderSearchComponent } from './components/header-search/header-search.component';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public isSettingsShown: boolean = false;
+  public isSettingsShown = false;
 
   public settingsShown() {
     this.isSettingsShown = !this.isSettingsShown;
