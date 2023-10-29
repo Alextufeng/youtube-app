@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataItem, Statistics } from '../search-item.model';
+import { DataItem, Statistics } from '../../../variables/search-item.model';
 import { MatIconModule } from '@angular/material/icon';
 import { BorderColorDirective } from 'src/app/directives/border-color.directive';
 import { StatisticsListComponent } from '../statistics-list/statistics-list.component';

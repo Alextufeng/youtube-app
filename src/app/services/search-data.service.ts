@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { DataResponse } from '../result/search-response.model';
+import { DataResponse } from '../variables/search-response.model';
 import * as dataResponse from 'src/assets/mock-data.json';
-import { DataItem } from '../result/search-item.model';
+import { DataItem } from '../variables/search-item.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

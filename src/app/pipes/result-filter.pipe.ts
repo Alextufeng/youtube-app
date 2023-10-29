@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DataItem } from '../result/search-item.model';
+import { DataItem } from '../variables/search-item.model';
 
 @Pipe({
   name: 'resultFilter',

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { StatisticsItemComponent } from '../statistics-item/statistics-item.component';
-import { DataItem, Statistics } from '../search-item.model';
+import { DataItem, Statistics } from '../../../variables/search-item.model';
 
 @Component({
   selector: 'app-statistics-list',

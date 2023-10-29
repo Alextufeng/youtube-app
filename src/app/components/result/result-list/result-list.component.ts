@@ -1,7 +1,7 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResultItemComponent } from '../result-item/result-item.component';
-import { DataItem } from '../search-item.model';
+import { DataItem } from '../../../variables/search-item.model';
 import { SearchDataService } from 'src/app/services/search-data.service';
 import { ResultFilterPipe } from 'src/app/pipes/result-filter.pipe';
 import { BehaviorSubject } from 'rxjs';
