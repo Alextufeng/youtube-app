@@ -4,13 +4,13 @@ import { DataItem } from '../search-item.model';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-search-item',
+  selector: 'app-result-item',
   standalone: true,
   imports: [CommonModule, MatIconModule],
-  templateUrl: './search-item.component.html',
-  styleUrls: ['./search-item.component.scss'],
+  templateUrl: './result-item.component.html',
+  styleUrls: ['./result-item.component.scss'],
 })
-export class SearchItemComponent {
+export class ResultItemComponent {
   @Input() item: DataItem;
   /* @Input() set item(item: DataItem) {
     this.fullItem = item;
