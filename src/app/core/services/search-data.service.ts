@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as dataResponse from 'src/assets/mock-data.json';
 import { BehaviorSubject } from 'rxjs';
-import { DataResponse } from '../variables/search-response.model';
-import { DataItem } from '../variables/search-item.model';
+import { DataItem } from 'src/app/youtube/models/search-item.model';
+import { DataResponse } from 'src/app/youtube/models/search-response.model';
 
 @Injectable({
   providedIn: 'root',

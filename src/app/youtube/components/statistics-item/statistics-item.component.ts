@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { STATISTICS } from 'src/app/variables/constants';
 import { MatIconModule } from '@angular/material/icon';
+import { STATISTICS } from '../../models/constants';
 
 @Component({
   selector: 'app-statistics-item',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResultListComponent } from './result-list/result-list.component';
+import { ResultListComponent } from '../../components/result-list/result-list.component';
 
 @Component({
   selector: 'app-result',

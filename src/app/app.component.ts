@@ -3,7 +3,7 @@ import { searchButtonIcon } from 'src/assets/icons/search-btn';
 import { logoIcon } from 'src/assets/icons/logo';
 import { settingsIcon } from 'src/assets/icons/settings';
 import { authIcon } from 'src/assets/icons/auth';
-import { IconService } from './services/icon-service.service';
+import { IconService } from './core/services/icon-service.service';
 
 @Component({
   selector: 'app-root',

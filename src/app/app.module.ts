@@ -6,16 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ResultComponent } from './components/result/result.component';
+import { CoreModule } from './core/core.module';
+import { YoutubeModule } from './youtube/youtube.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeaderComponent,
-    ResultComponent,
+    CoreModule,
+    YoutubeModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,

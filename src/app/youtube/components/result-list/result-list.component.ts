@@ -1,11 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchDataService } from 'src/app/services/search-data.service';
-import { ResultFilterPipe } from 'src/app/pipes/result-filter.pipe';
 import { BehaviorSubject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DataItem } from '../../../variables/search-item.model';
+import { SearchDataService } from 'src/app/core/services/search-data.service';
+import { DataItem } from '../../models/search-item.model';
 import { ResultItemComponent } from '../result-item/result-item.component';
+import { ResultFilterPipe } from '../../pipes/result-filter.pipe';
 
 @Component({
   selector: 'app-result-list',

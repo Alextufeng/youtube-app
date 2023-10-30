@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { BorderColorDirective } from 'src/app/directives/border-color.directive';
-import { BORDER_COLORS, BUTTONS } from 'src/app/variables/constants';
-import { DataItem, Statistics } from '../../../variables/search-item.model';
+import { DataItem, Statistics } from '../../models/search-item.model';
+import { BORDER_COLORS, BUTTONS } from '../../models/constants';
 import { StatisticsListComponent } from '../statistics-list/statistics-list.component';
-import { ButtonComponent } from '../../button/button.component';
+import { BorderColorDirective } from '../../directives/border-color.directive';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-result-item',
@@ -15,7 +15,7 @@ import { ButtonComponent } from '../../button/button.component';
     MatIconModule,
     BorderColorDirective,
     StatisticsListComponent,
-    ButtonComponent,
+    SharedModule,
   ],
   templateUrl: './result-item.component.html',
   styleUrls: ['./result-item.component.scss'],
