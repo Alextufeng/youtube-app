@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { BorderColorDirective } from 'src/app/directives/border-color.directive';
-import { BUTTONS } from 'src/app/variables/constants';
+import { BORDER_COLORS, BUTTONS } from 'src/app/variables/constants';
 import { DataItem, Statistics } from '../../../variables/search-item.model';
 import { StatisticsListComponent } from '../statistics-list/statistics-list.component';
 import { ButtonComponent } from '../../button/button.component';
@@ -79,16 +79,16 @@ export class ResultItemComponent implements OnInit {
   private setBorderColor(): void {
     switch (true) {
       case this.publishedDaysCount > 180:
-        this.borderBottomColor = 'red';
+        this.borderBottomColor = BORDER_COLORS.red;
         break;
       case this.publishedDaysCount < 7:
-        this.borderBottomColor = 'blue';
+        this.borderBottomColor = BORDER_COLORS.blue;
         break;
       case this.publishedDaysCount < 30:
-        this.borderBottomColor = 'green';
+        this.borderBottomColor = BORDER_COLORS.green;
         break;
       default:
-        this.borderBottomColor = 'yellow';
+        this.borderBottomColor = BORDER_COLORS.yellow;
     }
   }
 }

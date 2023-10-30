@@ -17,6 +17,5 @@ export class StatisticsListComponent implements OnInit {
 
   public ngOnInit(): void {
     this.statRowItem = Object.entries(this.statRow);
-    // console.log(typeof this.statRowItem);
   }
 }

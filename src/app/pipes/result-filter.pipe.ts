@@ -11,9 +11,13 @@ export class ResultFilterPipe implements PipeTransform {
   public transform(list: DataItem[], filterString: string): DataItem[] {
     if (filterString) {
       this.resultsData = list.filter(
-        (array) => array.snippet.tags && array.snippet.tags.includes(filterString),
+        (array) =>
+          array.snippet.tags &&
+          array.snippet.tags.find((item) =>
+            item.toLowerCase().includes(filterString.toLowerCase()),
+          ),
       );
-      return this.resultsData;
+      return (list = this.resultsData);
     }
     return list;
   }
