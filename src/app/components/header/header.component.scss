@@ -1,0 +1,61 @@
+@import 'colors';
+
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $block-background;
+  box-shadow: 0px 4px 4px $block-shadow;
+}
+
+.header {
+  height: 80px;
+  max-width: 1440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: 10px;
+}
+
+.logo__icon {
+  height: 50px;
+  width: 50px;
+}
+
+.settings__icon {
+  overflow: visible;
+  color: black;
+  filter: drop-shadow(2px 0px 4px $blue-color);
+  cursor: pointer;
+}
+
+.auth {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 28px;
+  right: 158px;
+
+  &__name {
+    min-width: 100px;
+    font-size: 12px;
+    color: $text-primary;
+    text-align: right;
+  }
+
+  &__icon {
+    background: $white;
+    border-radius: 5px;
+  }
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $background;
+}

@@ -1,0 +1,7 @@
+<div class="statistics-row">
+  <app-statistics-item
+    *ngFor="let item of statRowItem; let i = index"
+    [statItem]="statRowItem[i][0]"
+    [statCount]="statRowItem[i][1]"
+  ></app-statistics-item>
+</div>
