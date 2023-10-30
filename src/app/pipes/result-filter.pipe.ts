@@ -3,6 +3,7 @@ import { DataItem } from '../variables/search-item.model';
 
 @Pipe({
   name: 'resultFilter',
+  pure: false,
   standalone: true,
 })
 export class ResultFilterPipe implements PipeTransform {

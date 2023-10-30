@@ -17,8 +17,6 @@ import { ResultItemComponent } from '../result-item/result-item.component';
 export class ResultListComponent implements OnInit {
   public list: DataItem[] = [];
 
-  public keyString: string;
-
   public filterString: string;
 
   public onSearch$: BehaviorSubject<boolean>;
