@@ -1,0 +1,28 @@
+<div class="detailed">
+  <div class="detailed-image">
+    <img class="detailed-image__item" alt="detailed-item__image" [src]="imageUrl" />
+    <div class="detailed-image__label">#{{ categoryId }}</div>
+  </div>
+
+  <div class="detailed-content" [appBorderColor]="publishedAt | setColorDate">
+    <div class="detailed-title">
+      <h2 class="detailed-title__label">{{ channelTitle }} #{{ categoryId }}</h2>
+      <div class="detailed-title__date">{{ publishedAt | date: 'fullDate' }}</div>
+    </div>
+
+    <div class="detailed-description">
+      <h3 class="detailed-description__label">Description:</h3>
+      <div class="detailed-description__item">{{ description }}</div>
+    </div>
+
+    <div class="detailed-statistics">
+      <app-statistics-list [statRow]="statistics"></app-statistics-list>
+    </div>
+  </div>
+
+  <div class="detailed-back">
+    <app-button routerLink="">
+      <mat-icon class="detailed-back__icon" [svgIcon]="'arrowBack'"></mat-icon>
+    </app-button>
+  </div>
+</div>

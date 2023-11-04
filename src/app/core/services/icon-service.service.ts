@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { arrowBack } from 'src/assets/icons/arrow-back';
 import { authIcon } from 'src/assets/icons/auth';
 import { logoIcon } from 'src/assets/icons/logo';
 import { notFoundIcon } from 'src/assets/icons/not-found';
@@ -29,5 +30,6 @@ export class IconService {
     this.add('settingsIcon', settingsIcon);
     this.add('authIcon', authIcon);
     this.add('notFoundIcon', notFoundIcon);
+    this.add('arrowBack', arrowBack);
   }
 }
