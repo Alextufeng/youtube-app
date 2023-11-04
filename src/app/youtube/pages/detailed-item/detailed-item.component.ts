@@ -43,7 +43,6 @@ export class DetailedItemComponent {
   private setDetails() {
     const {id} = this.activeRoute.snapshot.params;
     const item = this.searchDataService.getDataById(id);
-    console.log(this.activeRoute.snapshot)
 
       if (!item) {
         this.router.navigate(['not-found']);
