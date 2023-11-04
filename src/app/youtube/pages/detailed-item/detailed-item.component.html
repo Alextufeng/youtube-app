@@ -1,4 +1,4 @@
-<div class="detailed">
+<div class="detailed" [appBoxShadow]="publishedAt | setColorDate">
   <div class="detailed-image">
     <img class="detailed-image__item" alt="detailed-item__image" [src]="imageUrl" />
     <div class="detailed-image__label">#{{ categoryId }}</div>

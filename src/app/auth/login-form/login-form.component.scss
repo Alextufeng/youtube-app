@@ -1,0 +1,52 @@
+@import 'colors';
+
+:host {
+  width: 28rem;
+  background-color: $login-background;
+  align-self: center;
+  padding: 30px 20px;
+  margin-top: 45px;
+  border-radius: 5px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: $text-primary;
+    margin-bottom: 10px;
+  }
+
+  &__label {
+    margin-left: 6px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: $text-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__input {
+    background-color: $block-background;
+    color: $text-primary;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    padding: 10px;
+    margin-bottom: 25px;
+    border-color: transparent;
+    outline: none;
+  }
+
+  &__button {
+    align-self: end;
+
+    ::ng-deep .button {
+      padding: 6px 40px;
+    }
+  }
+}

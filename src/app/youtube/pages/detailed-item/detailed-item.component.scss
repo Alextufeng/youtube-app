@@ -9,7 +9,7 @@
   border-radius: 10px;
   border-top-left-radius: 0;
   background-color: $block-background;
-  box-shadow: 5px 10px 10px $block-shadow;
+  border-bottom: 1px solid $text-secondary;
 
   &-image {
     position: relative;

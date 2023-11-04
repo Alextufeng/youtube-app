@@ -8,11 +8,12 @@ import { SearchDataService } from 'src/app/core/services/search-data.service';
 import { MatIconModule } from '@angular/material/icon';
 import { BorderColorDirective } from '../../directives/border-color.directive';
 import { SetColorDatePipe } from '../../pipes/set-border-color.pipe';
+import { BoxShadowDirective } from '../../directives/border-shadow.directive';
 
 @Component({
   selector: 'app-detailed-item',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, StatisticsListComponent, BorderColorDirective, MatIconModule, RouterModule, SetColorDatePipe],
+  imports: [CommonModule, ButtonComponent, StatisticsListComponent, BorderColorDirective, BoxShadowDirective, MatIconModule, RouterModule, SetColorDatePipe],
   templateUrl: './detailed-item.component.html',
   styleUrls: ['./detailed-item.component.scss']
 })
