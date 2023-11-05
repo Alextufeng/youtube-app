@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from './services/auth.service';
 import { BUTTONS } from 'src/app/youtube/models/constants';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,9 +13,10 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
 })
 export class LoginFormComponent {
   public buttonText = BUTTONS.login;
-  private formSubmit = inject(AuthService);
+
+  private formAuthService = inject(AuthService);
 
   public login(): void {
-    this.formSubmit.login();
+    this.formAuthService.login();
   }
 }

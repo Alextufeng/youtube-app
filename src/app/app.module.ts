@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { YoutubeModule } from './youtube/youtube.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +14,6 @@ import { YoutubeModule } from './youtube/youtube.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    YoutubeModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,

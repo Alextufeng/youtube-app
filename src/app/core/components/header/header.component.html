@@ -5,7 +5,10 @@
   <mat-icon [svgIcon]="'settingsIcon'" class="settings__icon" (click)="settingsShown()"></mat-icon>
 
   <div class="auth">
-    <span class="auth__name">Your Name</span>
+    <ng-container *ngIf="!(isUserLogged$ | async); else userName">
+      <span class="auth__name">Your Name</span>
+    </ng-container>
+
     <mat-icon [svgIcon]="'authIcon'" class="auth__icon"></mat-icon>
   </div>
 </header>
@@ -13,3 +16,7 @@
   <span class="line"></span>
   <app-header-search-settings></app-header-search-settings>
 </ng-container>
+
+<ng-template #userName>
+  <span class="auth__name">{{ userName$ | async }}</span>
+</ng-template>

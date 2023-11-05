@@ -77,4 +77,8 @@ export class SearchDataService {
   changeSearchTag(input: string) {
     this.filterString$.next(input);
   }
+
+  public clearSearchData(): void {
+    this.resultsData$.next([]);
+  }
 }

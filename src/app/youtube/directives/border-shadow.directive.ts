@@ -10,7 +10,7 @@ export class BoxShadowDirective {
     this.renderer.setStyle(
       this.elementRef.nativeElement,
       'box-shadow',
-      `10px 10px 40px ${this.borderColor}`,
+      `5px 5px 20px ${this.borderColor}`,
     );
   };
 
