@@ -21,13 +21,14 @@ export class AuthService {
 
   public login(): void {
     this.isUserLogged$.next(true);
+    this.userName$.next('Done Joe');
     localStorage.setItem('login', 'test');
     this.router.navigate(['']);
-    this.userName$.next('Done Joe');
   }
 
   public logout(): void {
     this.isUserLogged$.next(false);
+    this.userName$.next('');
     localStorage.removeItem('login');
     this.router.navigate(['login']);
     this.searchDataService.clearSearchData();

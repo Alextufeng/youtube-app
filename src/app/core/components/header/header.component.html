@@ -5,14 +5,14 @@
   <mat-icon [svgIcon]="'settingsIcon'" class="settings__icon" (click)="settingsShown()"></mat-icon>
 
   <div class="auth">
-    <ng-container *ngIf="(isUserLogged$ | async) === false; else userName">
+    <ng-container *ngIf="(userName$ | async) === ''; else userName">
       <span class="auth__name">Your Name</span>
     </ng-container>
 
     <mat-icon [svgIcon]="'authIcon'" class="auth__icon"></mat-icon>
+    <app-button (click)="logInApp()">{{ logIn }}</app-button>
+    <app-button (click)="logOutApp()">{{ logOut }}</app-button>
   </div>
-  <app-button (click)="logInApp()">{{ logIn }}</app-button>
-  <app-button (click)="logOutApp()">{{ logOut }}</app-button>
 </header>
 <ng-container *ngIf="isSettingsShown">
   <span class="line"></span>
