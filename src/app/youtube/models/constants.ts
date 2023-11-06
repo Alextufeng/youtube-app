@@ -9,6 +9,7 @@ export enum BUTTONS {
   more = 'more...',
   registration = 'registration',
   login = 'Login',
+  logout = 'Logout',
   create = 'Create card',
 }
 

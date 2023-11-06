@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IconService } from './core/services/icon-service.service';
+import { IconService } from './youtube/services/icon-service.service';
 
 @Component({
   selector: 'app-root',

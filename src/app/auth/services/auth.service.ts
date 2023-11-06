@@ -1,7 +1,7 @@
 import { Injectable, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { SearchDataService } from 'src/app/core/services/search-data.service';
+import { SearchDataService } from 'src/app/youtube/services/search-data.service';
 
 @Injectable({
   providedIn: 'root',

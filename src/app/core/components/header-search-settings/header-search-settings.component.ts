@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { SearchDataService } from 'src/app/core/services/search-data.service';
+import { SearchDataService } from 'src/app/youtube/services/search-data.service';
 
 @Component({
   selector: 'app-header-search-settings',

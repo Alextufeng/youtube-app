@@ -11,6 +11,8 @@
 
     <mat-icon [svgIcon]="'authIcon'" class="auth__icon"></mat-icon>
   </div>
+  <app-button (click)="logInApp()">{{ logIn }}</app-button>
+  <app-button (click)="logOutApp()">{{ logOut }}</app-button>
 </header>
 <ng-container *ngIf="isSettingsShown">
   <span class="line"></span>
