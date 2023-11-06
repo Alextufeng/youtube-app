@@ -5,7 +5,7 @@
   <mat-icon [svgIcon]="'settingsIcon'" class="settings__icon" (click)="settingsShown()"></mat-icon>
 
   <div class="auth">
-    <ng-container *ngIf="!(isUserLogged$ | async); else userName">
+    <ng-container *ngIf="(isUserLogged$ | async) === false; else userName">
       <span class="auth__name">Your Name</span>
     </ng-container>
 

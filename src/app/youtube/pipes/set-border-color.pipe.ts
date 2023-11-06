@@ -7,6 +7,7 @@ import { BORDER_COLORS, TIME } from '../models/constants';
 })
 export class SetColorDatePipe implements PipeTransform {
   private borderColor = '';
+
   private days = 0;
 
   transform(publishedAt: string): string {

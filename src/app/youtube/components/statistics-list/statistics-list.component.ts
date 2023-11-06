@@ -16,6 +16,6 @@ export class StatisticsListComponent implements OnInit {
   public statRowItem: [string, string][];
 
   public ngOnInit(): void {
-    this.statRowItem = Object.entries(this.statRow).filter(item => item[0] !== 'favoriteCount');
+    this.statRowItem = Object.entries(this.statRow).filter((item) => item[0] !== 'favoriteCount');
   }
 }

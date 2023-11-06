@@ -11,8 +11,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () =>
-      import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+    loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
     pathMatch: 'full',
     canActivate: [LoginGuard],
   },

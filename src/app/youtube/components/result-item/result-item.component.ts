@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 import { DataItem, Statistics } from '../../models/search-item.model';
 import { BUTTONS } from '../../models/constants';
 import { StatisticsListComponent } from '../statistics-list/statistics-list.component';
 import { BorderColorDirective } from '../../directives/border-color.directive';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { RouterModule } from '@angular/router';
 import { SetColorDatePipe } from '../../pipes/set-border-color.pipe';
 
 @Component({
@@ -19,7 +19,7 @@ import { SetColorDatePipe } from '../../pipes/set-border-color.pipe';
     StatisticsListComponent,
     SharedModule,
     RouterModule,
-    SetColorDatePipe
+    SetColorDatePipe,
   ],
   templateUrl: './result-item.component.html',
   styleUrls: ['./result-item.component.scss'],

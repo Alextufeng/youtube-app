@@ -18,7 +18,7 @@ export class ResultFilterPipe implements PipeTransform {
             item.toLowerCase().includes(filterString.toLowerCase()),
           ),
       );
-      return (list = this.resultsData);
+      return this.resultsData;
     }
     return list;
   }

@@ -1,4 +1,4 @@
-import { Injectable, OnInit, inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { SearchDataService } from 'src/app/youtube/services/search-data.service';
@@ -6,14 +6,14 @@ import { SearchDataService } from 'src/app/youtube/services/search-data.service'
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService implements OnInit {
-  public isUserLogged$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>( false);
+export class AuthService {
+  public isUserLogged$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   public userName$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  private router = inject(Router);
-  private searchDataService =  inject(SearchDataService);
+  private searchDataService = inject(SearchDataService);
 
-  public ngOnInit ( ) {
+  constructor(private router: Router) {
     if (localStorage.getItem('login')) {
       this.isUserLogged$.next(true);
     }
