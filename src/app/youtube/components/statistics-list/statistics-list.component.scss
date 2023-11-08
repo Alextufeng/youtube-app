@@ -1,0 +1,9 @@
+@import 'colors';
+
+.statistics-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: $text-primary;
+  font-size: 10px;
+}

@@ -1,0 +1,21 @@
+<div class="settings">
+  <div class="settings-date">
+    <span class="settings-date__placeholder">Sorting by:</span>
+    <!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus, @angular-eslint/template/click-events-have-key-events -->
+    <span class="settings__item" (click)="sortByDates()">date</span>
+  </div>
+  <div>
+    <!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus, @angular-eslint/template/click-events-have-key-events -->
+    <span class="settings__item" (click)="sortByViews()">count of views</span>
+  </div>
+  <div class="settings-input">
+    <label for="sort-by-word" class="settings-input__placeholder">by word or sentence:</label>
+    <input
+      class="settings-input__field"
+      type="text"
+      name="sort-by-word"
+      id="sort-by-word"
+      (input)="tagsFilter($event)"
+    />
+  </div>
+</div>
