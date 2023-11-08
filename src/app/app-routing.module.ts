@@ -21,7 +21,7 @@ const routes: Routes = [
     component: NotFoundComponent,
     canActivate: [LoginGuard],
   },
-  { path: '**', redirectTo: '/not-found', pathMatch: 'full' },
+  { path: '**', redirectTo: '/not-found' },
 ];
 
 @NgModule({
