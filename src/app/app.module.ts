@@ -12,10 +12,10 @@ import { CoreModule } from './core/core.module';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     MatIconModule,
   ],
   providers: [],

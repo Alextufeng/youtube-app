@@ -28,8 +28,6 @@ export class ResultListComponent implements OnInit {
   public filteredString$ = this.dataService.filterString$.pipe(takeUntilDestroyed());
 
   public ngOnInit(): void {
-    this.dataService.getData();
-
     this.resultList$.subscribe({
       next: (res) => {
         this.list = res;

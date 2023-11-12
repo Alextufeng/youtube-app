@@ -9,6 +9,7 @@ import { BorderColorDirective } from '../../directives/border-color.directive';
 import { SetColorDatePipe } from '../../pipes/set-border-color.pipe';
 import { BoxShadowDirective } from '../../directives/border-shadow.directive';
 import { SearchDataService } from '../../services/search-data.service';
+import { DataResponse } from '../../models/search-response.model';
 
 @Component({
   selector: 'app-detailed-item',
@@ -60,17 +61,19 @@ export class DetailedItemComponent implements OnInit {
 
   private setDetails() {
     const { id } = this.activeRoute.snapshot.params;
-    const item = this.searchDataService.getDataById(id);
+    const item = this.searchDataService.getDataById(id).subscribe((res: DataResponse) => {
+      const item = res.items[0];
 
-    if (!item) {
-      this.router.navigate(['not-found']);
-    } else {
-      this.publishedAt = item.snippet.publishedAt;
-      this.imageUrl = item.snippet.thumbnails.high.url;
-      this.channelTitle = item.snippet.channelTitle;
-      this.description = item.snippet.description;
-      this.statistics = item.statistics;
-      this.categoryId = item.snippet.categoryId;
-    }
+      if (!item) {
+        this.router.navigate(['not-found']);
+      } else {
+        this.publishedAt = item.snippet.publishedAt;
+        this.imageUrl = item.snippet.thumbnails.high.url;
+        this.channelTitle = item.snippet.channelTitle;
+        this.description = item.snippet.description;
+        this.statistics = item.statistics;
+        this.categoryId = item.snippet.categoryId;
+      }
+    });
   }
 }

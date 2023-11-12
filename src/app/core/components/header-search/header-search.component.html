@@ -5,6 +5,10 @@
     [placeholder]="placeholder"
     (input)="inputChange($event)"
     [value]="searchInputValue"
-  />
-  <mat-icon [svgIcon]="'searchButtonIcon'" class="search__icon" (click)="makeSearch()"></mat-icon>
+    [disabled]="isSearchInputDisabled"/>
+  <mat-icon
+    [svgIcon]="'searchButtonIcon'"
+    class="search__icon"
+    (click)="makeSearch()">
+  </mat-icon>
 </div>

@@ -29,3 +29,5 @@ export enum TIME {
   week = 7,
   month = 30,
 }
+
+export const itemsCount = 20;

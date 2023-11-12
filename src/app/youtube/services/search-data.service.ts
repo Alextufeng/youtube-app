@@ -1,44 +1,60 @@
-import { Injectable } from '@angular/core';
-import * as dataResponse from 'src/assets/mock-data.json';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject, Observable, mergeMap } from 'rxjs';
 import { DataItem } from 'src/app/youtube/models/search-item.model';
 import { DataResponse } from 'src/app/youtube/models/search-response.model';
+import { HttpService } from './http.service';
+import { itemsCount } from '../models/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchDataService {
   public onSearchClick$ = new BehaviorSubject(false);
-
-  private data: DataResponse = dataResponse;
-
-  private dateIsChanged = 0;
-
-  public filterString$ = new BehaviorSubject<string>('');
-
+  private searchUrl = 'search?type=video';
+  private detailedUrlStart = 'videos?id=';
+  private detailedUrlEnd = '&part=statistics';
   public resultsData$: BehaviorSubject<DataItem[]> = new BehaviorSubject<DataItem[]>([]);
+  public filterString$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  public resultsData: DataItem[] = [];
+ private httpService = inject(HttpService)
 
-  getData(): void {
-    this.resultsData$.next(this.data.items);
+  public searchData(searchString: string): void {
+    if (searchString.length < 3) {
+      this.resultsData$.next([]);
+      return;
+    }
+    const counter = itemsCount;
+    this.httpService
+      .getYoutubeItems(
+        `${this.searchUrl}&maxResults=${counter}&q=${searchString}`
+      )
+      .pipe(
+        mergeMap((result) => {
+          const idArray: string[] = [];
+          result.items.forEach((item) => {
+            idArray.push(item.id);
+            console.log(item.id)
+          });
+          return this.httpService.getYoutubeItems(
+            this.detailedUrlStart + idArray.join(',') + this.detailedUrlEnd
+          );
+        })
+      )
+      .subscribe({
+        next: (result) => {
+          this.resultsData$.next(result.items);
+        },
+        error: (err) => console.log({ err }),
+      });
   }
 
-  getDataChanged(): number {
-    return this.dateIsChanged;
+  public clearSearchDataSubject(): void {
+    this.resultsData$.next([]);
   }
 
-  searchData(searchString: string) {
-    this.resultsData = this.data.items.filter((item) =>
-      item.snippet.channelTitle.toLowerCase().startsWith(searchString.toLowerCase()),
-    );
-    this.dateIsChanged = Date.now();
-  }
-
-  public getDataById(id: string): DataItem {
-    this.searchData('');
-    const index = this.data.items.findIndex((item) => item.id === id);
-    return this.data.items[index];
+  public getDataById(id: string): Observable<DataResponse> {
+    const url = this.detailedUrlStart + id + this.detailedUrlEnd;
+    return this.httpService.getYoutubeItems(url);
   }
 
   sortResultByDate(): void {
