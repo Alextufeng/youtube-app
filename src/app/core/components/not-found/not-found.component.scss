@@ -1,0 +1,25 @@
+@import 'colors';
+
+:host {
+  height: calc(100vh - 140px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+
+  &__icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__label {
+    color: $text-tertiary;
+    font-size: 24px;
+    font-weight: bold;
+  }
+}

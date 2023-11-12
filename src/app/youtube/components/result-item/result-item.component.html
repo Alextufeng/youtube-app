@@ -1,0 +1,11 @@
+<div class="results-item" [appBorderColor]="publishedDaysBefore | setColorDate">
+  <img class="results-item__image" alt="results-item__image" [src]="mediumThumbnailUrl" />
+
+  <div class="results-item__statistics">
+    <app-statistics-list [statRow]="statistics"></app-statistics-list>
+  </div>
+  <h3 class="results-item__title">{{ channelTitle }} #{{ categoryId }}</h3>
+  <app-button routerLink="result/{{ itemId }}">
+    {{ buttonText }}
+  </app-button>
+</div>

@@ -1,0 +1,6 @@
+<div class="results" *ngIf="onSearch$ | async">
+  <app-result-item
+    *ngFor="let item of list | resultFilter: filterString"
+    [item]="item"
+  ></app-result-item>
+</div>

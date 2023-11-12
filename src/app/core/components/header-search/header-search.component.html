@@ -1,0 +1,14 @@
+<div class="search">
+  <input
+    class="search__input"
+    type="text"
+    [placeholder]="placeholder"
+    (input)="inputChange($event)"
+    [value]="searchInputValue"
+    [disabled]="isSearchInputDisabled"/>
+  <!-- <mat-icon
+    [svgIcon]="'searchButtonIcon'"
+    class="search__icon"
+    (click)="makeSearch()">
+  </mat-icon> -->
+</div>

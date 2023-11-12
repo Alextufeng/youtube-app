@@ -1,0 +1,30 @@
+@import 'colors';
+
+:host {
+  width: 264px;
+}
+
+.results-item {
+  background-color: $block-background;
+  box-shadow: 2px 2px 4px $block-shadow;
+  padding: 20px 20px 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__image {
+    width: 224px;
+    height: fit-content;
+  }
+
+  &__title {
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: $text-primary;
+    margin-right: 10px;
+    text-align: right;
+    margin-bottom: 40px;
+  }
+}
