@@ -10,8 +10,10 @@
     </ng-container>
 
     <mat-icon [svgIcon]="'authIcon'" class="auth__icon"></mat-icon>
-    <app-button (click)="logInApp()">{{ logIn }}</app-button>
-    <app-button (click)="logOutApp()">{{ logOut }}</app-button>
+
+    <ng-container *ngIf="(isUserLogged$ | async) === false; else userLogged">
+      <app-button (click)="logInApp()">{{ logIn }}</app-button>
+    </ng-container>
   </div>
 </header>
 <ng-container *ngIf="isSettingsShown">
@@ -21,4 +23,8 @@
 
 <ng-template #userName>
   <span class="auth__name">{{ userName$ | async }}</span>
+</ng-template>
+
+<ng-template #userLogged>
+  <app-button (click)="logOutApp()">{{ logOut }}</app-button>
 </ng-template>

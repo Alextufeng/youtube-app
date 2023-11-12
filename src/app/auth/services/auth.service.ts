@@ -15,14 +15,14 @@ export class AuthService {
 
   constructor(private router: Router) {
     if (localStorage.getItem('login')) {
-      this.isUserLogged$.next(true);
+      this.login();
     }
   }
 
   public login(): void {
     this.isUserLogged$.next(true);
-    this.userName$.next('Done Joe');
     localStorage.setItem('login', 'test');
+    this.userName$.next('Done Joe');
     this.router.navigate(['']);
     this.searchDataService.onSearchClick$.next(true);
   }
