@@ -28,6 +28,7 @@ export class ResultListComponent implements OnInit {
   public filteredString$ = this.dataService.filterString$.pipe(takeUntilDestroyed());
 
   public ngOnInit(): void {
+    this.onSearch$ = this.dataService.onSearchClick$;
     this.resultList$.subscribe({
       next: (res) => {
         this.list = res;
@@ -37,8 +38,6 @@ export class ResultListComponent implements OnInit {
         this.list = [];
       },
     });
-
-    this.onSearch$ = this.dataService.onSearchClick$;
 
     this.filteredString$.subscribe({
       next: (val) => {

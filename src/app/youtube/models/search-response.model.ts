@@ -7,7 +7,7 @@ export interface DataResponse {
   items: DataItem[];
 }
 
-interface PageInfo {
+export interface PageInfo {
   totalResults: number;
   resultsPerPage: number;
 }

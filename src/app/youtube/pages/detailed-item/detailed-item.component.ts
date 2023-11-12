@@ -61,7 +61,8 @@ export class DetailedItemComponent implements OnInit {
 
   private setDetails() {
     const { id } = this.activeRoute.snapshot.params;
-    const item = this.searchDataService.getDataById(id).subscribe((res: DataResponse) => {
+
+    this.searchDataService.getDataById(id).subscribe((res: DataResponse) => {
       const item = res.items[0];
 
       if (!item) {

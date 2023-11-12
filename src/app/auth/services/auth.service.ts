@@ -24,6 +24,7 @@ export class AuthService {
     this.userName$.next('Done Joe');
     localStorage.setItem('login', 'test');
     this.router.navigate(['']);
+    this.searchDataService.onSearchClick$.next(true);
   }
 
   public logout(): void {
@@ -32,5 +33,6 @@ export class AuthService {
     localStorage.removeItem('login');
     this.router.navigate(['login']);
     this.searchDataService.clearSearchData();
+    this.searchDataService.onSearchClick$.next(false);
   }
 }

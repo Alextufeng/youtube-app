@@ -24,27 +24,25 @@ export class HeaderSearchComponent implements OnInit {
   public isSearchInputDisabled = false;
 
   private dataService = inject(SearchDataService);
+
   private authService = inject(AuthService);
 
   public searchResultList$ = this.searchString$.pipe(takeUntilDestroyed());
+
   public isUserAuth$ = this.authService.isUserLogged$.pipe(takeUntilDestroyed());
 
   ngOnInit(): void {
-    this.searchResultList$
-      .pipe(debounceTime(1000))
-      .subscribe((value) => {
-        this.dataService.searchData(value);
-      });
-    this.isUserAuth$.subscribe(
-      (value) => {
-        if (!value) {
-          this.searchInputValue = '';
-          this.isSearchInputDisabled = true;
-        } else {
-          this.isSearchInputDisabled = false;
-        }
+    this.searchResultList$.pipe(debounceTime(1000)).subscribe((value) => {
+      this.dataService.searchData(value);
+    });
+    this.isUserAuth$.subscribe((value) => {
+      if (!value) {
+        this.searchInputValue = '';
+        this.isSearchInputDisabled = true;
+      } else {
+        this.isSearchInputDisabled = false;
       }
-    );
+    });
   }
 
   public makeSearch(): void {

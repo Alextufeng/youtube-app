@@ -6,7 +6,7 @@ export interface DataItem {
   statistics: Statistics;
 }
 
-interface Snippet {
+export interface Snippet {
   publishedAt: string;
   channelId: string;
   title: string;
@@ -23,7 +23,7 @@ interface Snippet {
   defaultAudioLanguage: string;
 }
 
-interface Thumbnails {
+export interface Thumbnails {
   default: Thumbnail;
   medium: Thumbnail;
   high: Thumbnail;

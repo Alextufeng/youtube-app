@@ -10,41 +10,46 @@ import { itemsCount } from '../models/constants';
 })
 export class SearchDataService {
   public onSearchClick$ = new BehaviorSubject(false);
+
   private searchUrl = 'search?type=video';
+
   private detailedUrlStart = 'videos?id=';
+
   private detailedUrlEnd = '&part=statistics';
+
   public resultsData$: BehaviorSubject<DataItem[]> = new BehaviorSubject<DataItem[]>([]);
+
   public filterString$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
- private httpService = inject(HttpService)
+  private httpService = inject(HttpService);
 
   public searchData(searchString: string): void {
+    if (this.onSearchClick$.value === false) {
+      return;
+    }
     if (searchString.length < 3) {
       this.resultsData$.next([]);
       return;
     }
     const counter = itemsCount;
     this.httpService
-      .getYoutubeItems(
-        `${this.searchUrl}&maxResults=${counter}&q=${searchString}`
-      )
+      .getYoutubeIds(`${this.searchUrl}&maxResults=${counter}&q=${searchString}`)
       .pipe(
         mergeMap((result) => {
           const idArray: string[] = [];
           result.items.forEach((item) => {
-            idArray.push(item.id);
-            console.log(item.id)
+            idArray.push(item.id.videoId);
           });
           return this.httpService.getYoutubeItems(
-            this.detailedUrlStart + idArray.join(',') + this.detailedUrlEnd
+            this.detailedUrlStart + idArray.join(',') + this.detailedUrlEnd,
           );
-        })
+        }),
       )
       .subscribe({
         next: (result) => {
           this.resultsData$.next(result.items);
         },
-        error: (err) => console.log({ err }),
+        error: (err) => console.log({ err }), // eslint-disable-line
       });
   }
 
