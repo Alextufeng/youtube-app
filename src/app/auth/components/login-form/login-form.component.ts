@@ -5,6 +5,7 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { emailValidator } from '../../validators/email.validator';
+import { passwordValidator } from '../../validators/password.validator';
 
 @Component({
   selector: 'app-login-form',
@@ -22,10 +23,7 @@ export class LoginFormComponent implements OnInit{
   public ngOnInit(): void {
     this.authForm = new FormGroup({
       email: new FormControl('', [Validators.required, emailValidator()]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
+      password: new FormControl('', [Validators.required, passwordValidator()]),
     });
   }
 

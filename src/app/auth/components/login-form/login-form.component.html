@@ -9,7 +9,7 @@
       placeholder="Done Joe"
       formControlName="email"
     />
-    <div *ngIf="authForm.get('email')?.touched" class="validation">
+    <div *ngIf="authForm.get('email')?.dirty || authForm.get('email')?.touched" class="validation">
       <small *ngIf="authForm.get('email')!.hasError('required')">
         Please enter a login email.
       </small>
@@ -30,10 +30,25 @@
       autocomplete="currentPassword"
     />
     <div
-      *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched"
+      *ngIf="authForm.get('password')?.dirty || authForm.get('password')?.touched"
       class="validation"
     >
-      <small *ngIf="authForm.get('password')!.errors"> Please enter a password. </small>
+      <small *ngIf="authForm.get('password')!.hasError('required')">
+        Please enter a password.
+      </small>
+
+      <small *ngIf="authForm.get('password')!.errors?.['minLength']">
+        {{ authForm.get('password')!.errors?.['minLength'] }}
+      </small>
+      <small *ngIf="authForm.get('password')!.errors?.['caseMix']">
+        {{ authForm.get('password')!.errors?.['caseMix'] }}
+      </small>
+      <small *ngIf="authForm.get('password')!.errors?.['alphanumeric']">
+        {{ authForm.get('password')!.errors?.['alphanumeric'] }}
+      </small>
+      <small *ngIf="authForm.get('password')!.errors?.['specialChar']">
+        {{ authForm.get('password')!.errors?.['specialChar'] }}
+      </small>
     </div>
   </div>
   <app-button class="auth-form__button" type="submit" [disabled]="authForm.invalid">
