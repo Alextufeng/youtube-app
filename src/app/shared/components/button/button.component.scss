@@ -1,3 +1,9 @@
+@import 'colors';
+
 :host {
   align-self: center;
+
+  :disabled {
+    background-color: $button-disabled-color;
+  }
 }

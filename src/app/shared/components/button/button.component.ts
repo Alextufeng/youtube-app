@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ButtonComponent {
   @Input() buttonText: string | null;
+  @Input() disabled: boolean;
+  @Input() type = 'button';
 
   @Output() onClick = new EventEmitter<any>(); // eslint-disable-line
 
