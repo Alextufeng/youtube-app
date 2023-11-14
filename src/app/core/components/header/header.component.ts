@@ -30,12 +30,16 @@ export class HeaderComponent {
 
   public admin = BUTTONS.admin;
 
+  public main = BUTTONS.main;
+
   private authService = inject(AuthService);
   private adminService = inject(AdminPageService);
 
   public isUserLogged$ = this.authService.isUserLogged$;
 
   public userName$ = this.authService.userName$;
+
+  public isAdmin$ = this.authService.isAdminPage$
 
   public settingsShown() {
     this.isSettingsShown = !this.isSettingsShown;
@@ -51,5 +55,11 @@ export class HeaderComponent {
 
   public toAdminPage() {
     this.adminService.adminPage();
+    this.authService.isAdminPage$.next(false)
+  }
+
+  public toMainPage() {
+      this.adminService.mainPage();
+      this.authService.isAdminPage$.next(true);
   }
 }

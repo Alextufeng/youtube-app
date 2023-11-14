@@ -10,4 +10,8 @@ export class AdminPageService {
   public adminPage(): void {
     this.router.navigate(['admin']);
   }
+
+  public mainPage(): void {
+    this.router.navigate(['']);
+  }
 }

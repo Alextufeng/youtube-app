@@ -12,7 +12,8 @@ export enum BUTTONS {
   logout = 'Logout',
   create = 'Create card',
   admin = 'Admin',
-  reset = 'Reset'
+  reset = 'Reset',
+  main = 'Main'
 }
 
 export enum BORDER_COLORS {
