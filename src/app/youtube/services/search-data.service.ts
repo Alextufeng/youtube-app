@@ -2,26 +2,19 @@ import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, mergeMap } from 'rxjs';
 import { DataItem } from 'src/app/youtube/models/search-item.model';
 import { DataResponse } from 'src/app/youtube/models/search-response.model';
-import { HttpService } from './http.service';
-import { itemsCount } from '../models/constants';
+import { VideoApiService } from './video-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchDataService {
+  private videoApiService = inject( VideoApiService);
+
   public onSearchClick$ = new BehaviorSubject(false);
-
-  private searchUrl = 'search?type=video';
-
-  private detailedUrlStart = 'videos?id=';
-
-  private detailedUrlEnd = '&part=statistics';
 
   public resultsData$: BehaviorSubject<DataItem[]> = new BehaviorSubject<DataItem[]>([]);
 
   public filterString$: BehaviorSubject<string> = new BehaviorSubject<string>('');
-
-  private httpService = inject(HttpService);
 
   public searchData(searchString: string): void {
     if (this.onSearchClick$.value === false) {
@@ -31,18 +24,16 @@ export class SearchDataService {
       this.resultsData$.next([]);
       return;
     }
-    const counter = itemsCount;
-    this.httpService
-      .getYoutubeIds(`${this.searchUrl}&maxResults=${counter}&q=${searchString}`)
+
+    this.videoApiService
+      .getYoutubeIds(searchString)
       .pipe(
         mergeMap((result) => {
           const idArray: string[] = [];
           result.items.forEach((item) => {
             idArray.push(item.id.videoId);
           });
-          return this.httpService.getYoutubeItems(
-            this.detailedUrlStart + idArray.join(',') + this.detailedUrlEnd,
-          );
+          return this.videoApiService.getYoutubeItems(idArray);
         }),
       )
       .subscribe({
@@ -58,8 +49,7 @@ export class SearchDataService {
   }
 
   public getDataById(id: string): Observable<DataResponse> {
-    const url = this.detailedUrlStart + id + this.detailedUrlEnd;
-    return this.httpService.getYoutubeItems(url);
+    return this.videoApiService.getYoutubeItems([id]);
   }
 
   sortResultByDate(): void {
