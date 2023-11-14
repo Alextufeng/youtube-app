@@ -14,6 +14,9 @@
     <ng-container *ngIf="(isUserLogged$ | async) === false; else userLogged">
       <app-button (click)="logInApp()">{{ logIn }}</app-button>
     </ng-container>
+    <ng-container *ngIf="(isUserLogged$ | async) === true">
+      <app-button (click)="toAdminPage()">{{ admin }}</app-button>
+    </ng-container>
   </div>
 </header>
 <ng-container *ngIf="isSettingsShown">

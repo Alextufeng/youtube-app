@@ -6,6 +6,7 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
 import { BUTTONS } from 'src/app/youtube/models/constants';
 import { HeaderSearchSettingsComponent } from '../header-search-settings/header-search-settings.component';
 import { HeaderSearchComponent } from '../header-search/header-search.component';
+import { AdminPageService } from 'src/app/youtube/services/admin-page.service';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,10 @@ export class HeaderComponent {
 
   public logOut = BUTTONS.logout;
 
+  public admin = BUTTONS.admin;
+
   private authService = inject(AuthService);
+  private adminService = inject(AdminPageService);
 
   public isUserLogged$ = this.authService.isUserLogged$;
 
@@ -43,5 +47,9 @@ export class HeaderComponent {
 
   public logOutApp() {
     this.authService.logout();
+  }
+
+  public toAdminPage() {
+    this.adminService.adminPage();
   }
 }

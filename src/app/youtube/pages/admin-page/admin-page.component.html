@@ -1,0 +1,85 @@
+<form class="auth-form" [formGroup]="adminForm" (ngSubmit)="createCard()" novalidate>
+  <h2 class="auth-form__header">Create new card</h2>
+
+  <div class="form-control">
+    <label for="title" class="auth-form__label">Title</label>
+    <input
+      type="text"
+      name="title"
+      class="auth-form__input"
+      placeholder=""
+      formControlName="title"
+    />
+    <div
+      *ngIf="adminForm.get('title')?.dirty || adminForm.get('title')?.touched"
+      class="validation"
+    >
+      <small *ngIf="adminForm.get('title')!.hasError('required')"> Please enter a title. </small>
+      <small *ngIf="adminForm.get('title')!.errors?.['minLength']"> The title is too short. </small>
+      <small *ngIf="adminForm.get('title')!.errors?.['maxLength']"> The title is too long. </small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label for="description" class="auth-form__label">Description (optional)</label>
+    <input
+      type="text"
+      name="description"
+      class="auth-form__input"
+      placeholder=""
+      formControlName="description"
+    />
+    <div
+      *ngIf="adminForm.get('description')?.dirty || adminForm.get('description')?.invalid"
+      class="validation"
+    >
+      <small *ngIf="adminForm.get('description')!.hasError('maxlength')">
+        The description is too long.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label for="image" class="auth-form__label">Img</label>
+    <input
+      type="url"
+      name="image"
+      class="auth-form__input"
+      placeholder=""
+      formControlName="image"
+    />
+    <div
+      *ngIf="adminForm.get('image')?.dirty || adminForm.get('image')?.touched"
+      class="validation"
+    >
+      <small *ngIf="adminForm.get('image')!.hasError('required')">
+        Please enter a link to the image.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label for="link" class="auth-form__label">Link video</label>
+    <input type="url" name="link" class="auth-form__input" placeholder="" formControlName="link" />
+    <div *ngIf="adminForm.get('link')?.dirty || adminForm.get('link')?.touched" class="validation">
+      <small *ngIf="adminForm.get('link')!.hasError('required')">
+        Please enter a link to the video.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label for="date" class="auth-form__label">Date</label>
+    <input type="date" name="date" class="auth-form__input" placeholder="" formControlName="date" />
+    <div *ngIf="adminForm.get('date')?.dirty || adminForm.get('date')?.touched" class="validation">
+      <small *ngIf="adminForm.get('date')!.hasError('required')">
+        Please enter a creation date.
+      </small>
+      <small *ngIf="adminForm.get('date')!.errors?.['wrongDate']"> The date is invalid. </small>
+    </div>
+  </div>
+
+  <app-button class="auth-form__button" type="submit" [disabled]="adminForm.invalid">
+    {{ buttonText }}</app-button
+  >
+</form>
