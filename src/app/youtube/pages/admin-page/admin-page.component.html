@@ -79,7 +79,12 @@
     </div>
   </div>
 
-  <app-button class="auth-form__button" type="submit" [disabled]="adminForm.invalid">
-    {{ buttonText }}</app-button
-  >
+  <div class="auth-form__buttons">
+    <app-button class="auth-form__button" type="button" (click)="formReset()">
+      {{ resetButton }}</app-button
+    >
+    <app-button class="auth-form__button" type="submit" [disabled]="adminForm.invalid">
+      {{ createButton }}</app-button
+    >
+  </div>
 </form>

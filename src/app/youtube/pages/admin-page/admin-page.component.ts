@@ -15,7 +15,8 @@ import { dateValidator } from '../../validators/date.validator';
 })
 export class AdminPageComponent implements OnInit {
   public adminForm: FormGroup;
-  public buttonText = BUTTONS.create;
+  public createButton = BUTTONS.create;
+  public resetButton = BUTTONS.reset;
 
   public ngOnInit(): void {
     this.adminForm = new FormGroup({
@@ -28,9 +29,12 @@ export class AdminPageComponent implements OnInit {
   }
 
   public createCard() {
-
     if (this.adminForm.valid) {
       console.log(this.adminForm.value)
     }
+  }
+
+  public formReset() {
+    this.adminForm.reset();
   }
 }

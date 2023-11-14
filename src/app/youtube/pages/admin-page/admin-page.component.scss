@@ -74,9 +74,11 @@
     }
   }
 
-  &__button {
+  &__buttons {
     margin-top: 20px;
     align-self: end;
+    display: flex;
+    gap: 20px;
 
     ::ng-deep .button {
       padding: 6px 40px;
