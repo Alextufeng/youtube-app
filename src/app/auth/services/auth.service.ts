@@ -9,6 +9,8 @@ import { SearchDataService } from 'src/app/youtube/services/search-data.service'
 export class AuthService {
   public isUserLogged$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+  public isAdminPage$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+
   public userName$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   private searchDataService = inject(SearchDataService);
@@ -34,5 +36,6 @@ export class AuthService {
     this.router.navigate(['login']);
     this.searchDataService.clearSearchData();
     this.searchDataService.onSearchClick$.next(false);
+    this.isAdminPage$.next(true);
   }
 }

@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { DetailedItemComponent } from './youtube/pages/detailed-item/detailed-item.component';
 import { LoginGuard } from './auth/guards/login.guard';
+import { AdminPageComponent } from './youtube/pages/admin-page/admin-page.component';
 
 const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  { path: 'admin', component: AdminPageComponent },
   {
     path: '',
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
@@ -21,7 +23,7 @@ const routes: Routes = [
     component: NotFoundComponent,
     canActivate: [LoginGuard],
   },
-  { path: '**', redirectTo: '/not-found', pathMatch: 'full' },
+  { path: '**', redirectTo: '/not-found' },
 ];
 
 @NgModule({

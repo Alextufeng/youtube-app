@@ -1,8 +1,57 @@
-<div class="auth-form">
+<form class="auth-form" [formGroup]="authForm" (ngSubmit)="login()" novalidate>
   <h2 class="auth-form__header">Login</h2>
-  <label for="auth" class="auth-form__label">login</label>
-  <input type="text" name="auth" class="auth-form__input" placeholder="Done Joe" />
-  <label for="password" class="auth-form__label">password</label>
-  <input type="password" name="password" class="auth-form__input" placeholder="Enter password" />
-  <app-button class="auth-form__button" (click)="login()"> {{ buttonText }}</app-button>
-</div>
+  <div class="form-control">
+    <label for="auth" class="auth-form__label">login</label>
+    <input
+      type="text"
+      name="auth"
+      class="auth-form__input"
+      placeholder="Done Joe"
+      formControlName="email"
+    />
+    <div *ngIf="authForm.get('email')?.dirty || authForm.get('email')?.touched" class="validation">
+      <small *ngIf="authForm.get('email')!.hasError('required')">
+        Please enter a login email.
+      </small>
+      <small *ngIf="authForm.get('email')!.hasError('wrongMail')">
+        The login email
+        <span class="validation__login">{{ authForm.get('email')?.value }}</span> is invalid.
+      </small>
+    </div>
+  </div>
+  <div class="form-control">
+    <label for="password" class="auth-form__label">password</label>
+    <input
+      type="password"
+      name="password"
+      class="auth-form__input"
+      placeholder="Enter password"
+      formControlName="password"
+      autocomplete="currentPassword"
+    />
+    <div
+      *ngIf="authForm.get('password')?.dirty || authForm.get('password')?.touched"
+      class="validation"
+    >
+      <small *ngIf="authForm.get('password')!.hasError('required')">
+        Please enter a password.
+      </small>
+
+      <small *ngIf="authForm.get('password')!.errors?.['minLength']">
+        {{ authForm.get('password')!.errors?.['minLength'] }}
+      </small>
+      <small *ngIf="authForm.get('password')!.errors?.['caseMix']">
+        {{ authForm.get('password')!.errors?.['caseMix'] }}
+      </small>
+      <small *ngIf="authForm.get('password')!.errors?.['alphanumeric']">
+        {{ authForm.get('password')!.errors?.['alphanumeric'] }}
+      </small>
+      <small *ngIf="authForm.get('password')!.errors?.['specialChar']">
+        {{ authForm.get('password')!.errors?.['specialChar'] }}
+      </small>
+    </div>
+  </div>
+  <app-button class="auth-form__button" type="submit" [disabled]="authForm.invalid">
+    {{ buttonText }}</app-button
+  >
+</form>

@@ -15,20 +15,19 @@ import { SearchDataService } from '../../services/search-data.service';
   styleUrls: ['./result-list.component.scss'],
 })
 export class ResultListComponent implements OnInit {
+  private dataService = inject(SearchDataService);
+
   public list: DataItem[] = [];
 
   public filterString: string;
 
-  public onSearch$: BehaviorSubject<boolean>;
-
-  private dataService = inject(SearchDataService);
+  public onSearch$: BehaviorSubject<boolean> = this.dataService.onSearchClick$;
 
   public resultList$ = this.dataService.resultsData$.pipe(takeUntilDestroyed());
 
   public filteredString$ = this.dataService.filterString$.pipe(takeUntilDestroyed());
 
   public ngOnInit(): void {
-    this.onSearch$ = this.dataService.onSearchClick$;
     this.resultList$.subscribe({
       next: (res) => {
         this.list = res;
