@@ -21,7 +21,7 @@ export class ResultListComponent implements OnInit {
 
   public filterString: string;
 
-  public onSearch$: BehaviorSubject<boolean> = this.dataService.onSearchClick$;;
+  public onSearch$: BehaviorSubject<boolean> = this.dataService.onSearchClick$;
 
   public resultList$ = this.dataService.resultsData$.pipe(takeUntilDestroyed());
 

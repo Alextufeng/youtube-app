@@ -2,8 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BUTTONS } from 'src/app/youtube/models/constants';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
-import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { emailValidator } from '../../validators/email.validator';
 import { passwordValidator } from '../../validators/password.validator';
 
@@ -14,8 +14,9 @@ import { passwordValidator } from '../../validators/password.validator';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit{
+export class LoginFormComponent implements OnInit {
   public authForm: FormGroup;
+
   public buttonText = BUTTONS.login;
 
   private formAuthService = inject(AuthService);

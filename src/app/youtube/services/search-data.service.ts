@@ -8,7 +8,7 @@ import { VideoApiService } from './video-api.service';
   providedIn: 'root',
 })
 export class SearchDataService {
-  private videoApiService = inject( VideoApiService);
+  private videoApiService = inject(VideoApiService);
 
   public onSearchClick$ = new BehaviorSubject(false);
 

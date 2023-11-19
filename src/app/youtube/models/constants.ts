@@ -14,7 +14,7 @@ export enum BUTTONS {
   admin = 'Admin',
   reset = 'Reset',
   main = 'Main',
-  tagsAdding = 'Add tag'
+  tagsAdding = 'Add tag',
 }
 
 export enum BORDER_COLORS {

@@ -8,7 +8,7 @@ import { itemsCount } from '../models/constants';
 @Injectable({
   providedIn: 'root',
 })
-export class  VideoApiService {
+export class VideoApiService {
   private counter = itemsCount;
 
   private searchUrl = 'search?type=video';
@@ -24,6 +24,8 @@ export class  VideoApiService {
   }
 
   getYoutubeItems(array: string[]): Observable<DataResponse> {
-    return this.http.get<DataResponse>(this.detailedUrlStart + array.join(',') + this.detailedUrlEnd);
+    return this.http.get<DataResponse>(
+      this.detailedUrlStart + array.join(',') + this.detailedUrlEnd,
+    );
   }
 }

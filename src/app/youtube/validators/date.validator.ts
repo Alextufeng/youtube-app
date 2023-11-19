@@ -1,5 +1,4 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { ValidationErrors } from '@angular/forms';
+import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
 export function dateValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -8,9 +7,9 @@ export function dateValidator(): ValidatorFn {
     const maxDate = new Date().toLocaleDateString().split('.').reverse().join('-');
 
     if (value > maxDate) {
-    errors['wrongDate'] = 'The title is too short.';
+      errors['wrongDate'] = 'The title is too short.';
     }
 
     return Object.keys(errors).length > 0 ? errors : null;
-  }
+  };
 }
