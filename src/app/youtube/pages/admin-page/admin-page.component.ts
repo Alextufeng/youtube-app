@@ -48,7 +48,7 @@ export class AdminPageComponent implements OnInit {
 
   public createCard() {
     if (this.adminForm.valid) {
-      console.log(this.adminForm.value); // eslint-disable-line
+      console.log({...this.adminForm.value, tags: this.tags}); // eslint-disable-line
     }
   }
 
