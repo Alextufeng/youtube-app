@@ -13,7 +13,8 @@ export enum BUTTONS {
   create = 'Create card',
   admin = 'Admin',
   reset = 'Reset',
-  main = 'Main'
+  main = 'Main',
+  tagsAdding = 'Add tag'
 }
 
 export enum BORDER_COLORS {

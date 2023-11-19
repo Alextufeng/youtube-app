@@ -79,6 +79,35 @@
     </div>
   </div>
 
+  <div class="tags-form" [formGroup]="tagForm">
+    <label for="tag" class="tags-form__label">Tag input</label>
+    <input
+      type="text"
+      name="tag"
+      class="auth-form__input"
+      placeholder=""
+      formControlName="tag"
+      [attr.disabled]="tags.length > 4 ? true : null"
+    />
+    <div *ngIf="tagForm.get('tag')?.dirty || tagForm.get('tag')?.touched" class="validation">
+      <small *ngIf="tagForm.get('tag')!.hasError('required')"> Please enter a tag for item. </small>
+    </div>
+    <div class="tags">
+      <div class="tags__item" *ngFor="let tagItem of tags; index as i" #i>
+        <div class="tag">{{ tagItem }}</div>
+        <mat-icon class="tags__icon" fontIcon="close" (click)="deleteTagItem(i)"></mat-icon>
+      </div>
+    </div>
+    <app-button
+      class="auth-form__button"
+      type="submit"
+      [disabled]="tagForm.invalid || tags.length > 4"
+      (click)="saveTagItem()"
+    >
+      {{ tagsAddingButton }}</app-button
+    >
+  </div>
+
   <div class="auth-form__buttons">
     <app-button class="auth-form__button" type="button" (click)="formReset()">
       {{ resetButton }}</app-button
