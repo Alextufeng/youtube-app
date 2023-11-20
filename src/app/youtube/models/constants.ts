@@ -27,7 +27,7 @@ export enum BORDER_COLORS {
 export enum TIME {
   millisecondsPerSecond = 1000,
   secondsPerMinute = 60,
-  minutesPerHour = 60,
+  minutesPerHour = secondsPerMinute,
   hoursPerDay = 24,
   halfOfYear = 180,
   week = 7,
